@@ -12,7 +12,6 @@ export default async function DetailProductByIdPage({
   params,
 }: ProductPageProps) {
   const product = await getProductById(Number(params.id));
-  console.log("🚀 ~ DetailProductByIdPage ~ product:", product);
 
   if (!product) {
     return (

@@ -14,7 +14,6 @@ export default function WelcomeComponente({
 }: WelcomeComponenteProps) {
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // Close popup on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

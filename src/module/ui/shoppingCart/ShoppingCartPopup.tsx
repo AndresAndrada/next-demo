@@ -20,7 +20,6 @@ export default function ShoppingCartPopup({
   const { items, removeItem, updateQuantity, getTotal } = useCartStore();
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // Cerrar popup al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

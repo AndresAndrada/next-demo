@@ -23,7 +23,6 @@ export default function ProductList({ initialProducts }: ProductListProps) {
   const [isWelcomeOpen, setIsWelcomeOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("🚀 ~ ProductList ~ hasVisited:", HasVisited);
     if (!HasVisited) {
       setIsWelcomeOpen(true);
       setHasVisited(true);

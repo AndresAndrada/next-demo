@@ -1,20 +1,16 @@
 import { Product } from '@/lib/types';
 import { create } from 'zustand';
-
-
-// Definimos la interfaz para el estado de la tienda
 interface ProductStore {
-  DataPerfilProduct:  Product | null; // Cambiado de Product a Product[] para consistencia
+  DataPerfilProduct:  Product | null;
   Products: Product[];
-  DetailsProduct: Product | null; // Reemplaza con una interfaz específica si la tienes
+  DetailsProduct: Product | null;
   TotalProductsPages: number;
   CurrentProductsPage: number;
   SelectedTab: string;
-  ProductById: Record<string, Product>; // Reemplaza con una interfaz específica si la tienes
+  ProductById: Record<string, Product>;
   ConsumerProducts: string;
-  Carrito: Record<string, string | number | Product>[]; // Cambiado a un objeto para detalles del carrito
+  Carrito: Record<string, string | number | Product>[];
 
-  // Métodos para actualizar el estado
   setProducts: (values: Product[]) => void;
   setDataPerfilProduct: (values: Product) => void;
   setDetailsProduct: (values: Product) => void;
@@ -26,7 +22,6 @@ interface ProductStore {
   setCarrito: (consumer: Record<string, string | number | Product>[]) => void;
 }
 
-// Creamos la tienda con Zustand y tipamos el estado
 export const useProductStore = create<ProductStore>((set) => ({
   DataPerfilProduct: null,
   Products: [],

@@ -17,7 +17,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleFavorite = async () => {
     const newStatus = !product.fav;
     const updatedProduct = await updateProductFav(product.id, newStatus);
-    console.log("🚀 ~ handleFavorite ~ updatedProduct:", updatedProduct);
     if (updatedProduct) {
       ToggleFavorite(product.id, product);
     }

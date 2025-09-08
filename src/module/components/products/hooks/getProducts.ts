@@ -18,7 +18,6 @@ export async function getProductById(id: number): Promise<Product | undefined | 
     return new Promise((resolve) => {
       setTimeout(() => {
         const product = mockProducts.find((p) => p.id === id) || null;
-        console.log("🚀 ~ getProductById ~ product:", product)
         resolve(product);
       }, 500);
     });
@@ -35,7 +34,6 @@ export async function getProductName(name: string): Promise<Product[] | null | u
         const products = mockProducts.filter((product) =>
           product.titulo.toLowerCase().includes(name.toLowerCase())
         );
-        console.log("🚀 ~ getProductName ~ products:", products);
         resolve(products);
       }, 500);
     });
