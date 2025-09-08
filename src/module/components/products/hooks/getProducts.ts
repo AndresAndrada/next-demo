@@ -28,17 +28,39 @@ export async function getProductById(id: number): Promise<Product | undefined | 
   }
 }
 
-export async function getProductName(name: string): Promise<Product | undefined | null> {
+export async function getProductName(name: string): Promise<Product[] | null | undefined> {
   try {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const product = mockProducts.find((p) => p.titulo === name) || null;
-        console.log("🚀 ~ getProductById ~ product:", product)
-        resolve(product);
+        const products = mockProducts.filter((product) =>
+          product.titulo.toLowerCase().includes(name.toLowerCase())
+        );
+        console.log("🚀 ~ getProductName ~ products:", products);
+        resolve(products);
       }, 500);
     });
   } catch (error) {
-    console.error("Error fetching products: ", error);
-    
+    console.error("Error fetching products by name: ", error);
+    return null;
+  }
+}
+
+export async function updateProductFav(id: number, status: boolean): Promise<Product | null> {
+  try {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const productIndex = mockProducts.findIndex((p) => p.id === id);
+        if (productIndex === -1) {
+          resolve(null);
+        } else {
+          const updatedProduct = { ...mockProducts[productIndex], fav: status };
+          mockProducts[productIndex] = updatedProduct;
+          resolve(updatedProduct);
+        }
+      }, 500);
+    });
+  } catch (error) {
+    console.error("Error updating product fav: ", error);
+    return null;
   }
 }

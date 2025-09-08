@@ -1,3 +1,13 @@
+[data-theme="light"] .page {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+[data-theme="dark"] .page {
+  background-color: #222;
+  color: #fff;
+}
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -12,6 +22,7 @@
   /* padding: 80px; */
   gap: 64px;
   font-family: var(--font-geist-sans);
+    transition: all .5s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,21 +67,32 @@
   width: 100%;
 }
 
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
- 
+@media (max-width: 950px) {
+  .page {
+    width: 100vw;
+  }
+   .description {
+    padding: 16px;
+  }
 }
+
+
+@media (max-width: 600px) {
+  .page {
+    width: 100vw;
+  }
+   .description {
+    padding: 16px;
+  }
+}
+
 
 @media (max-width: 600px) {
   .page {
     width: 100%;
-    padding: 16px;
-    padding-bottom: 80px;
   }
    .description {
     padding: 16px;
-    padding-bottom: 80px;
   }
 }
 

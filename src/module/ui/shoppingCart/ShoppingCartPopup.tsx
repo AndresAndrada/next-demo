@@ -59,7 +59,7 @@ export default function ShoppingCartPopup({
         {items.length === 0 ? (
           <div className={styles.emptyState}>
             <div className={styles.emptyIcon}>
-              <FaShoppingCart size={"20px"} color={"black"} />
+              <FaShoppingCart size={"20px"} />
             </div>
             <p className={styles.empty}>El carrito está vacío</p>
           </div>

@@ -3,22 +3,24 @@ import styles from "./FavoritesButton.module.css";
 
 interface FavoritesButtonProps {
   productId: number;
+  productRating: number;
 }
 
-export default function FavoritesButton({ productId }: FavoritesButtonProps) {
+export default function FavoritesButton({
+  productId,
+  productRating,
+}: FavoritesButtonProps) {
   const favorites = useUiStore((state) => state.Favorites);
-  const toggleFavorite = useUiStore((state) => state.ToggleFavorite);
   const isFavorite = favorites.some(
     (product) => product.id === productId && product.fav
   );
 
   return (
-    <button
+    <div
       className={styles.favoriteButton}
-      onClick={() => toggleFavorite(productId)}
       aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
     >
-      {isFavorite ? "★" : "☆"}
-    </button>
+      {isFavorite ? "★" : "☆"} {productRating}
+    </div>
   );
 }

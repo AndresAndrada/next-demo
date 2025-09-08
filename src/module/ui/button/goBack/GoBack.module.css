@@ -1,0 +1,57 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .backButton {
+  color: rgb(90, 90, 90);
+}
+
+[data-theme="light"] .backButton {
+  color: rgb(159, 159, 159);
+}
+
+.backButton:hover {
+  color: black;
+}
+
+[data-theme="dark"] .backButton:hover {
+  color: #e1dcdc;
+}
+
+[data-theme="light"] .backButton:hover {
+  color: #2b2a2a;
+}
+
+.backIcon {
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .backIcon {
+  color: black;
+}
+
+[data-theme="dark"] .backIcon {
+  color: white;
+}
+
+[data-theme="light"] .backButton:hover .backIcon {
+  color: black;
+}
+
+[data-theme="dark"] .backButton:hover .backIcon {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .backButton {
+  padding: 12px 10px;
+}
+
+}

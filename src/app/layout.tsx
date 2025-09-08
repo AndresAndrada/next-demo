@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import styles from "./layout.module.css";
 import NavBar from "@/module/ui/navbar/NavBar";
+import ThemeProvider from "@/provider/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Mi tienda",
@@ -14,14 +13,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //  const distinctCartItems = useCartStore((state) =>
-  //   new Set(state.items.map((item) => item.id)).size
-  // );
   return (
     <html lang="es">
       <body>
-        <NavBar />
-        <main className="main">{children}</main>
+        <ThemeProvider>
+          <NavBar />
+          <main className="main">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

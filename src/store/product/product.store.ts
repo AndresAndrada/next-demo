@@ -5,7 +5,7 @@ import { create } from 'zustand';
 // Definimos la interfaz para el estado de la tienda
 interface ProductStore {
   DataPerfilProduct:  Product | null; // Cambiado de Product a Product[] para consistencia
-  Products: Product[] | undefined;
+  Products: Product[];
   DetailsProduct: Product | null; // Reemplaza con una interfaz específica si la tienes
   TotalProductsPages: number;
   CurrentProductsPage: number;
@@ -15,7 +15,7 @@ interface ProductStore {
   Carrito: Record<string, string | number | Product>[]; // Cambiado a un objeto para detalles del carrito
 
   // Métodos para actualizar el estado
-  setProducts: (values: Product[] | undefined) => void;
+  setProducts: (values: Product[]) => void;
   setDataPerfilProduct: (values: Product) => void;
   setDetailsProduct: (values: Product) => void;
   setProductById: (values: Record<string, Product>) => void;
@@ -38,7 +38,7 @@ export const useProductStore = create<ProductStore>((set) => ({
   ConsumerProducts: 'Minorista',
   Carrito: [],
 
-  setProducts: (values: Product[] | undefined) => set({ Products: values }),
+  setProducts: (values: Product[]) => set({ Products: values }),
   setDataPerfilProduct: (values: Product) => set({ DataPerfilProduct: values }),
   setDetailsProduct: (values) => set({ DetailsProduct: values }),
   setProductById: (values) => set({ ProductById: values }),

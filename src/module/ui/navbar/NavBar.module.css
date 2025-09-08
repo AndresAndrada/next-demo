@@ -3,11 +3,24 @@
     background-color: rgb(16, 41, 41);
 }
 
+[data-theme="light"] .navbar {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .navbar {
     padding: 16px 32px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    transition: all .5s;
 }
 
 .cartIcon {
@@ -15,7 +28,19 @@
 }
 
 .cartContainer {
+  display: flex;
   position: relative;
+  gap: 1rem;
+}
+
+[data-theme="light"] .cartIcon {
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .cartIcon {
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cartIcon {
@@ -37,12 +62,20 @@
   font-size: 0.75rem;
 }
 
-.searchButton {
-  padding: 8px 16px;
-  background-color: #0070f3;
-  color: #fff;
+
+.themeToggle {
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+[data-theme="light"] .themeToggle {
+  color: #333;
+}
+
+[data-theme="dark"] .themeToggle {
+  color: #fff;
 }
 
 @media (max-width: 600px) {

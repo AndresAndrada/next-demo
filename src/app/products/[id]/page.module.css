@@ -1,0 +1,33 @@
+[data-theme="light"] .notFound {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="dark"] .notFound {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.notFound {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+}
+
+[data-theme="light"] .container {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="dark"] .container {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+    transition: all .5s;
+
+}

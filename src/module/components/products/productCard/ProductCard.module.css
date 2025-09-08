@@ -88,14 +88,41 @@
 
 .rating {
   display: flex;
-  width: 2.5rem;
+  width: 2.9rem;
   max-height: 2rem;
   font-size: 1rem;
   color: #f5a623;
   margin-bottom: 8px;
 }
 
-/* Media queries para responsividad */
+.favoriteButton {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffa94df5;
+  transition: color 0.3s ease;
+}
+
+.favoriteButton:hover {
+  color: #ff4d4f; /* Rojo para hover en ambos modos */
+}
+
+.favoriteIcon {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .card {
+  width: 100%;
+  max-width: 200px;
+  min-width: 120px;
+  max-height: 300px;
+  margin: 10px;
+}
+}
+
 @media (max-width: 600px) {
   .card {
     width: 100%;

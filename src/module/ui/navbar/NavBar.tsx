@@ -4,12 +4,15 @@ import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
-import { useCartStore } from "@/store";
+import { useCartStore, useUiStore } from "@/store";
 import ShoppingCartPopup from "../shoppingCart/ShoppingCartPopup";
+import { MdDarkMode } from "react-icons/md";
+import { FaSun } from "react-icons/fa";
 
 export default function NavBar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const distinctCartItems = useCartStore((state) => state.getDistinctCount());
+  const { theme, toggleTheme } = useUiStore();
 
   return (
     <header className={styles.header}>
@@ -17,7 +20,21 @@ export default function NavBar() {
         <Link href="/" className={styles.logo}>
           Mi Tienda
         </Link>
+
         <div className={styles.cartContainer}>
+          <button
+            className={styles.themeToggle}
+            onClick={toggleTheme}
+            aria-label={`Cambiar a modo ${
+              theme === "light" ? "oscuro" : "claro"
+            }`}
+          >
+            {theme === "light" ? (
+              <MdDarkMode size={"22px"} />
+            ) : (
+              <FaSun size={"22px"} />
+            )}
+          </button>
           <button
             className={styles.cartIcon}
             onClick={() => setIsCartOpen(true)}

@@ -6,62 +6,88 @@ import { Product } from "@/lib/types";
 import ProductCard from "../productCard/ProductCard";
 import ProductNotFound from "../productNotFound/ProductNotFound";
 import SearchInpunt from "@/module/ui/input/searchBar/SearchInpunt";
-import { useProductStore } from "@/store";
+import { useProductStore, useUiStore } from "@/store";
+import { getProductName } from "@/module/components/products/hooks/getProducts";
+import WelcomeComponente from "@/module/ui/welcomeComponente/WelcomeComponente";
 
 interface ProductListProps {
   initialProducts: Product[] | undefined;
 }
 
 export default function ProductList({ initialProducts }: ProductListProps) {
-  // const [products, setProducts] = useState<Product[]>(initialProducts || []);
-  const { setProducts, Products } = useProductStore((store) => store);
+  const { Products, setProducts } = useProductStore();
+  const { HasVisited, setHasVisited } = useUiStore();
+  const { setFavoritesId } = useUiStore();
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(false);
-  setProducts(initialProducts);
-  console.log("🚀 ~ ProductList ~ Products:", Products);
+  const [loading, setLoading] = useState(true);
+  const [isWelcomeOpen, setIsWelcomeOpen] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const timeout = setTimeout(() => {
-  //     if (!initialProducts) {
-  //       setProducts([]);
-  //       setLoading(false);
-  //       return;
-  //     }
-  //     const filtered = initialProducts.filter((product) =>
-  //       product.titulo.toLowerCase().includes(searchTerm.toLowerCase())
-  //     );
-  //     setProducts(filtered);
-  //     setLoading(false);
-  //   }, 500);
+  useEffect(() => {
+    console.log("🚀 ~ ProductList ~ hasVisited:", HasVisited);
+    if (!HasVisited) {
+      setIsWelcomeOpen(true);
+      setHasVisited(true);
+    }
+  }, [HasVisited, setHasVisited]);
 
-  //   return () => clearTimeout(timeout);
-  // }, [searchTerm, setProducts, initialProducts]);
+  useEffect(() => {
+    try {
+      if (initialProducts) {
+        setProducts(initialProducts);
+        const initialFavorites = initialProducts
+          .filter((p) => p.fav)
+          .map((p) => p.id);
+        setFavoritesId(initialFavorites);
+      }
+    } catch (error) {
+      console.error("Error filtering products:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [initialProducts, setProducts, setFavoritesId]);
+
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(async () => {
+      if (!searchTerm) {
+        setProducts(initialProducts || []);
+        setLoading(false);
+        return;
+      }
+      try {
+        const filtered = await getProductName(searchTerm);
+        setProducts(filtered || []);
+      } catch (error) {
+        console.error("Error filtering products:", error);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [searchTerm, initialProducts, setProducts]);
 
   return (
     <div className={styles.productListContainer}>
-      {/* Grid de productos */}
+      <SearchInpunt setSearchTerm={setSearchTerm} />
       {loading ? (
         <div className={styles.loading}>Cargando...</div>
-      ) : Products?.length === 0 ? (
-        <>
-          <div>
-            <SearchInpunt setSearchTerm={setSearchTerm} />
-          </div>
-          <div className={styles.productNotFound}>
-            <ProductNotFound />
-          </div>
-        </>
+      ) : Products.length === 0 ? (
+        <div className={styles.productNotFound}>
+          <ProductNotFound />
+        </div>
       ) : (
-        <>
-          <SearchInpunt setSearchTerm={setSearchTerm} />
-          <div className={styles.productGrid}>
-            {initialProducts?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </>
+        <div className={styles.productGrid}>
+          {Products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       )}
+      <WelcomeComponente
+        isOpen={isWelcomeOpen}
+        onClose={() => setIsWelcomeOpen(false)}
+      />
     </div>
   );
 }
