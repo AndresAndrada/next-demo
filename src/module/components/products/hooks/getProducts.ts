@@ -19,7 +19,7 @@ export async function getProductById(id: number): Promise<Product | undefined | 
       setTimeout(() => {
         const product = mockProducts.find((p) => p.id === id) || null;
         resolve(product);
-      }, 500);
+      }, 100);
     });
   } catch (error) {
     console.error("Error fetching products: ", error);
@@ -35,7 +35,7 @@ export async function getProductName(name: string): Promise<Product[] | null | u
           product.titulo.toLowerCase().includes(name.toLowerCase())
         );
         resolve(products);
-      }, 500);
+      }, 100);
     });
   } catch (error) {
     console.error("Error fetching products by name: ", error);
@@ -55,7 +55,7 @@ export async function updateProductFav(id: number, status: boolean): Promise<Pro
           mockProducts[productIndex] = updatedProduct;
           resolve(updatedProduct);
         }
-      }, 500);
+      }, 100);
     });
   } catch (error) {
     console.error("Error updating product fav: ", error);
