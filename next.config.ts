@@ -1,20 +1,63 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-   images: {
-     domains: [
-       "www.ubuy.com.ar",
-       "i.ebayimg.com",
-       "media.adeo.com",
-       "www.asus.com",
-       "cdn-xiaomi.waugi.com.ar",
-       "example.com",
-       "audioimport.com.ar",
-       "http2.mlstatic.com",
-       "fullh4rd.com.ar",
-       "d2eebw31vcx88p.cloudfront.net"
-     ],
-   },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.ubuy.com.ar',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ebayimg.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.adeo.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.asus.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-xiaomi.waugi.com.ar',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'http2.mlstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fullh4rd.com.ar',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'd2eebw31vcx88p.cloudfront.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

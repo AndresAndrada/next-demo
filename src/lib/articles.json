@@ -52,7 +52,7 @@
       "titulo": "Tablet",
       "descripcion": "Tablet con pantalla de 10 pulgadas y soporte para lápiz óptico.",
       "precio": 399.99,
-      "imagen": "https://example.com/images/tablet.jpg",
+      "imagen": "https://res.cloudinary.com/de7fyvmdp/image/upload/v1757512253/samples/tablet-pc-with-colorful-application-icons-isolated-on-white-background-illustration-free-vector-claro_tsjsso.jpg",
       "rating": 3,
       "categoria": "Electrónica"
     },
@@ -61,7 +61,7 @@
       "titulo": "Altavoz Bluetooth",
       "descripcion": "Altavoz portátil con una duración de batería de 12 horas.",
       "precio": 89.99,
-      "imagen": "https://audioimport.com.ar/wp-content/uploads/2020/06/jbl-flip-5-parlante-bluetooth-portatil-inalambrico-D_NQ_NP_640868-MLA40809778396_022020-F-1.jpg",
+      "imagen": "https://res.cloudinary.com/de7fyvmdp/image/upload/v1757512441/samples/D_NQ_NP_973885-MLA91502639908_092025-O-altavoces_qpwxgw.webp",
       "fav": false,
       "rating": 4,
       "categoria": "Accesorios"
