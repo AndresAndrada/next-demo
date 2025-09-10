@@ -16,37 +16,39 @@ interface ProductListProps {
 
 export default function ProductList({ initialProducts }: ProductListProps) {
   const { Products, setProducts } = useProductStore();
-  const { HasVisited, setHasVisited } = useUiStore();
   const { setFavoritesId } = useUiStore();
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isWelcomeOpen, setIsWelcomeOpen] = useState<boolean>(false);
+  const [isWelcomeOpen, setIsWelcomeOpen] = useState(false);
 
+  // Check if user has visited before
   useEffect(() => {
-    if (!HasVisited) {
+    const hasVisited = localStorage.getItem("hasVisited");
+    if (!hasVisited) {
       setIsWelcomeOpen(true);
-      setHasVisited(true);
+      localStorage.setItem("hasVisited", "true");
     }
-  }, [HasVisited, setHasVisited]);
+  }, []);
 
+  // Initialize products and favorites
   useEffect(() => {
     try {
       if (initialProducts) {
         setProducts(initialProducts);
-        const initialFavorites = initialProducts
-          .filter((p) => p.fav)
-          .map((p) => p.id);
+        const initialFavorites =
+          initialProducts.filter((p) => p.fav).map((p) => p.id) || [];
+        console.log("🚀 ~ ProductList ~ initialFavorites:", initialFavorites);
         setFavoritesId(initialFavorites);
       }
     } catch (error) {
-      console.error("Error filtering products:", error);
+      console.error("Error initializing products:", error);
     } finally {
       setLoading(false);
     }
   }, [initialProducts, setProducts, setFavoritesId]);
 
+  // Handle search
   useEffect(() => {
-    setLoading(true);
     const timeout = setTimeout(async () => {
       if (!searchTerm) {
         setProducts(initialProducts || []);
