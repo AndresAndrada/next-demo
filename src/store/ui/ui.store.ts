@@ -1,20 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Product } from '@/lib/types';
+import { Product, UiStore } from '@/lib/types';
 
-interface UiStore {
-  Favorites: Product[];
-  FavoritesId: number[];
-  isFavorite: (productId: number) => boolean;
-  theme: 'light' | 'dark';
-  HasVisited: true | false;
 
-  ToggleFavorite: (productId: number, product: Product) => void;
-  setFavorites: (values: Product[]) => void;
-  setFavoritesId: (values: number[]) => void;
-  toggleTheme: () => void;
-  setHasVisited: (values: boolean) => void;
-}
 
 export const useUiStore = create<UiStore>()(
   persist(
@@ -22,7 +10,7 @@ export const useUiStore = create<UiStore>()(
       Favorites: [],
       theme: 'light',
       FavoritesId: [],
-      HasVisited: false,
+      hasVisited: false,
 
       toggleTheme: () => set((state) => ({
         theme: state.theme === 'light' ? 'dark' : 'light',
@@ -42,7 +30,7 @@ export const useUiStore = create<UiStore>()(
       },
       setFavorites: (values: Product[]) => set({ Favorites: values }),
       setFavoritesId: (values: number[]) => set({ FavoritesId: values }),
-      setHasVisited: (values: boolean) => set({ HasVisited: values }),
+      setHasVisited: (values: boolean) => set({ hasVisited: values }),
     }),
     { name: 'ui-storage' }
   )

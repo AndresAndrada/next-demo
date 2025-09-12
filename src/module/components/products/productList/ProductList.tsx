@@ -9,6 +9,7 @@ import SearchInpunt from "@/module/ui/input/searchBar/SearchInpunt";
 import { useProductStore, useUiStore } from "@/store";
 import { getProductName } from "@/module/components/products/hooks/getProducts";
 import WelcomeComponente from "@/module/ui/welcomeComponente/WelcomeComponente";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 interface ProductListProps {
   initialProducts: Product[] | undefined;
@@ -16,19 +17,32 @@ interface ProductListProps {
 
 export default function ProductList({ initialProducts }: ProductListProps) {
   const { Products, setProducts } = useProductStore();
-  const { setFavoritesId } = useUiStore();
+  const { setFavoritesId, hasVisited, setHasVisited } = useUiStore();
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [isWelcomeOpen, setIsWelcomeOpen] = useState(false);
 
+  console.log("🚀 ~ ProductList ~ HasVisited:", hasVisited);
   // Check if user has visited before
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      setIsWelcomeOpen(true);
-      localStorage.setItem("hasVisited", "true");
+    scrollToTop({ smooth: true });
+    const storedState = localStorage.getItem("ui-storage");
+    let isVisited = hasVisited;
+    try {
+      const parsedState = storedState ? JSON?.parse(storedState) : null;
+      isVisited = parsedState?.state?.hasVisited || false;
+    } catch (error) {
+      console.error("Error parsing ui-storage:", error);
     }
-  }, []);
+    if (!isVisited) {
+      setIsWelcomeOpen(true);
+      setHasVisited(true);
+    }
+  }, [hasVisited, setHasVisited]);
+
+  const hableOpenModalWelcome = () => {
+    setIsWelcomeOpen(false);
+  };
 
   // Initialize products and favorites
   useEffect(() => {
@@ -87,7 +101,7 @@ export default function ProductList({ initialProducts }: ProductListProps) {
       )}
       <WelcomeComponente
         isOpen={isWelcomeOpen}
-        onClose={() => setIsWelcomeOpen(false)}
+        onClose={hableOpenModalWelcome}
       />
     </div>
   );

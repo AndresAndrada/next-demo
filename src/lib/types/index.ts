@@ -22,3 +22,17 @@ export interface CartState {
   getDistinctCount: () => number;
   getTotal: () => number;
 }
+
+export interface UiStore {
+  Favorites: Product[];
+  FavoritesId: number[];
+  isFavorite: (productId: number) => boolean;
+  theme: 'light' | 'dark';
+  hasVisited: true | false;
+
+  ToggleFavorite: (productId: number, product: Product) => void;
+  setFavorites: (values: Product[]) => void;
+  setFavoritesId: (values: number[]) => void;
+  toggleTheme: () => void;
+  setHasVisited: (values: boolean) => void;
+}

@@ -5,6 +5,8 @@ import { Product } from "@/lib/types";
 import styles from "./ProductDetail.module.css";
 import { useCartStore } from "@/store";
 import Link from "next/link";
+import { useEffect } from "react";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 interface ProductDetailProps {
   product: Product;
@@ -12,6 +14,10 @@ interface ProductDetailProps {
 
 export default function ProductDetail({ product }: ProductDetailProps) {
   const { addItem } = useCartStore();
+
+  useEffect(() => {
+    scrollToTop({ smooth: true });
+  }, []);
 
   return (
     <div className={styles.container}>
