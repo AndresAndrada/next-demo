@@ -109,6 +109,14 @@
   color: #333;
 }
 
+[data-theme="light"] .closeButton {
+  color: #333;
+}
+
+[data-theme="dark"] .closeButton {
+  color: #fff;
+}
+
 [data-theme="light"] .empty {
   color: #333;
 }
@@ -180,7 +188,7 @@
 }
 
 .quantityButton {
-  background-color: #2f2b2b;
+  background-color: #4a4848;
   border: none;
   border-radius: 4px;
   padding: 4px 8px;
@@ -189,15 +197,24 @@
 }
 
 .quantityButton:hover {
-  background-color: #e0e0e0;
+  background-color: #827e7e;
 }
 
 .quantity {
   font-size: 1rem;
   min-width: 24px;
   text-align: center;
-  color: rgb(45, 43, 43);
+  color: rgb(111, 108, 108);
 }
+
+[data-theme="light"] .quantity {
+  color: #333;
+}
+
+[data-theme="dark"] .quantity {
+  color: #fff;
+}
+
 
  .removeButton {
   background: rgba(49, 47, 47, .1);

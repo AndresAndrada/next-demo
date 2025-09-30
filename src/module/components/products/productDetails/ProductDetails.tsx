@@ -7,6 +7,7 @@ import { useCartStore } from "@/store";
 import Link from "next/link";
 import { useEffect } from "react";
 import { scrollToTop } from "@/utils/scrollToTop";
+import toast from "react-hot-toast";
 
 interface ProductDetailProps {
   product: Product;
@@ -74,7 +75,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         <div className={styles.actions}>
           <button
             className={styles.addToCart}
-            onClick={() => addItem(product)}
+            onClick={() => {
+              addItem(product);
+              toast.success("Producto agregado correctamente", {
+                duration: 2000,
+                position: "top-center",
+              });
+            }}
             aria-label={`Agregar ${product.titulo} al carrito`}
           >
             Comprar

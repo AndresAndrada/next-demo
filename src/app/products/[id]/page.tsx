@@ -5,14 +5,33 @@ import styles from "./page.module.css";
 import GoBack from "@/module/ui/button/goBack/GoBack";
 
 interface ProductPageProps {
-  params: { id: number };
+  params: Promise<{ id: string }>;
 }
 
 export default async function DetailProductByIdPage({
   params,
 }: ProductPageProps) {
-  if (!params?.id) return;
-  const product = await getProductById(Number(params?.id));
+  const { id } = await params; // Esperar la resolución de params
+  if (!id) {
+    return (
+      <div className={styles.notFound}>
+        <GoBack />
+        <ProductNotFound />
+      </div>
+    );
+  }
+
+  const productId = Number(id);
+  if (isNaN(productId)) {
+    return (
+      <div className={styles.notFound}>
+        <GoBack />
+        <ProductNotFound />
+      </div>
+    );
+  }
+
+  const product = await getProductById(productId);
 
   if (!product) {
     return (

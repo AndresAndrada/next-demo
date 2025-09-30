@@ -22,8 +22,6 @@ export default function ProductList({ initialProducts }: ProductListProps) {
   const [loading, setLoading] = useState(true);
   const [isWelcomeOpen, setIsWelcomeOpen] = useState(false);
 
-  console.log("🚀 ~ ProductList ~ HasVisited:", hasVisited);
-  // Check if user has visited before
   useEffect(() => {
     scrollToTop({ smooth: true });
     const storedState = localStorage.getItem("ui-storage");
@@ -44,14 +42,12 @@ export default function ProductList({ initialProducts }: ProductListProps) {
     setIsWelcomeOpen(false);
   };
 
-  // Initialize products and favorites
   useEffect(() => {
     try {
       if (initialProducts) {
         setProducts(initialProducts);
         const initialFavorites =
           initialProducts.filter((p) => p.fav).map((p) => p.id) || [];
-        console.log("🚀 ~ ProductList ~ initialFavorites:", initialFavorites);
         setFavoritesId(initialFavorites);
       }
     } catch (error) {
@@ -61,7 +57,6 @@ export default function ProductList({ initialProducts }: ProductListProps) {
     }
   }, [initialProducts, setProducts, setFavoritesId]);
 
-  // Handle search
   useEffect(() => {
     const timeout = setTimeout(async () => {
       if (!searchTerm) {
