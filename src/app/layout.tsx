@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/module/ui/navbar/NavBar";
 import ThemeProvider from "@/provider/ThemeProvider";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Mi tienda",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <ThemeProvider>
+          <Toaster />
           <NavBar />
           <main className="main">{children}</main>
         </ThemeProvider>

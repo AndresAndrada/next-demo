@@ -1,8 +1,10 @@
 import { CartState } from '@/lib/types';
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const useCartStore = create<CartState>()(
-    (set, get) => ({
+     persist(
+      (set, get) => ({
       items: [],
       addItem: (product) => {
         const existingItem = get().items.find((item) => item.id === product.id);
@@ -30,5 +32,5 @@ export const useCartStore = create<CartState>()(
       getTotal: () =>
         get().items.reduce((total, item) => total + item.precio * item.quantity, 0),
     }
-  )
+  ), { name: 'cart-storage' })
 );

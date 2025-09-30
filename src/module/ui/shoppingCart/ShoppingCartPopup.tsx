@@ -7,6 +7,7 @@ import { CartItem } from "@/lib/types";
 import styles from "./ShoppingCartPopup.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import toast from "react-hot-toast";
 
 interface ShoppingCartPopupProps {
   isOpen: boolean;
@@ -103,7 +104,13 @@ export default function ShoppingCartPopup({
                 </div>
                 <button
                   className={styles.removeButton}
-                  onClick={() => removeItem(item.id)}
+                  onClick={() => {
+                    removeItem(item.id);
+                    toast.success("Producto eliminado del carrito", {
+                      duration: 4000,
+                      position: "top-center",
+                    });
+                  }}
                   aria-label={`Eliminar ${item.titulo} del carrito`}
                 >
                   <MdDeleteForever size={"30px"} />
