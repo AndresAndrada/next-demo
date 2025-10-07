@@ -1,3 +1,5 @@
+"use client";
+
 import { scrollToTop } from "@/utils/scrollToTop";
 import { Product } from "@/lib/types";
 import { useEffect } from "react";
