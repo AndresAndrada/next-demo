@@ -24,11 +24,23 @@
 }
 
 .itemNavbar {
+  width: 68px;
   font-weight: 700;
 }
 
-.itemNavbar:hover {
-  text-decoration: underline;
+.itemNavbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 1px; /* Ajusta la distancia del subrayado */
+    width: 0;
+    height: 2px; /* Grosor del subrayado */
+    background: rgb(141, 124, 91);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.itemNavbar:hover::after {
+    width: 68px;
 }
 
 .cartIcon {
