@@ -20,8 +20,10 @@ export default function NavBar() {
         <Link href="/" className={styles.logo}>
           Mi Tienda
         </Link>
-
         <div className={styles.cartContainer}>
+          <Link href={"/favorite"} className={styles.itemNavbar}>
+            Favorite
+          </Link>
           <button
             className={styles.themeToggle}
             onClick={toggleTheme}
