@@ -12,6 +12,9 @@ export default function FavoritePage() {
 
   return (
     <div className={styles.containerFavorite}>
+      <div className={styles.headerFavorite}>
+        <h1>Favoritos</h1>
+      </div>
       <div className={styles.favorites}>
         {favorites.map((p) => (
           <FavoriteComponent key={p.id} product={p} />
