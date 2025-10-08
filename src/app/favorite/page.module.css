@@ -1,0 +1,42 @@
+[data-theme="light"] .notFound {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="dark"] .notFound {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.notFound {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+}
+
+[data-theme="light"] .containerFavorite {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="dark"] .containerFavorite {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.containerFavorite {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.favorites {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  max-width: 1300px;
+  min-height: 100vh;
+  transition: all .5s;
+}
