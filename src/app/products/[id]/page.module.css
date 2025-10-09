@@ -16,6 +16,10 @@
     transition: all .5s;
 }
 
+.goBack {
+  width: 100%;
+}
+
 [data-theme="light"] .container {
   background-color: #f9f9f9;
 
@@ -26,8 +30,16 @@
 }
 
 .container {
-  width: 100%;
+  /* width: 100%; */
   min-height: 100vh;
-    transition: all .5s;
+  transition: all .5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  /* min-height: 100vh; */
+  width: 100vw;
+    
 
 }

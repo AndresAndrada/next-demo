@@ -14,8 +14,10 @@ export default async function DetailProductByIdPage({
   const { id } = await params; // Esperar la resolución de params
   if (!id) {
     return (
-      <div className={styles.notFound}>
-        <GoBack />
+      <div className={styles.container}>
+        <div className={styles.goBack}>
+          <GoBack />
+        </div>
         <ProductNotFound />
       </div>
     );
@@ -24,8 +26,10 @@ export default async function DetailProductByIdPage({
   const productId = Number(id);
   if (isNaN(productId)) {
     return (
-      <div className={styles.notFound}>
-        <GoBack />
+      <div className={styles.container}>
+        <div className={styles.goBack}>
+          <GoBack />
+        </div>
         <ProductNotFound />
       </div>
     );
@@ -35,8 +39,10 @@ export default async function DetailProductByIdPage({
 
   if (!product) {
     return (
-      <div className={styles.notFound}>
-        <GoBack />
+      <div className={styles.container}>
+        <div className={styles.goBack}>
+          <GoBack />
+        </div>
         <ProductNotFound />
       </div>
     );

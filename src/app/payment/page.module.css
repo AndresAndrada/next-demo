@@ -1,3 +1,26 @@
+[data-theme="light"] .notFound {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="dark"] .notFound {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.notFound {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    transition: all .5s;
+}
+
+.goBack {
+  width: 100%;
+}
+
 [data-theme="light"] .container {
   background-color: #f9f9f9;
   color: rgba(0, 0, 0, 0.7);
@@ -13,13 +36,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  gap: 2rem;
   min-height: 100vh;
   width: 100vw;
-}
-
-.headerFavorite {
-  padding: 20px;
 }
