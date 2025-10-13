@@ -28,7 +28,7 @@ export default function FavoritePage() {
       <div className={styles.headerFavorite}>
         <h1>Carrito de compras</h1>
       </div>
-      <div className={styles.favorites}>
+      <div className={styles.containerPayment}>
         {items.map((p) => (
           <PaymentComponent key={p.id} product={p} />
         ))}

@@ -37,16 +37,16 @@ export default function NavBar() {
               <FaSun size={"22px"} />
             )}
           </button>
-          <button
+          <div
             className={styles.cartIcon}
             onClick={() => setIsCartOpen(true)}
-            aria-label={`Abrir carrito con ${distinctCartItems} productos distintos`}
+            // aria-label={`Abrir carrito con ${distinctCartItems} productos distintos`}
           >
             <FaShoppingCart size={"22px"} />
             {distinctCartItems > 0 && (
               <span className={styles.cartCount}>{distinctCartItems}</span>
             )}
-          </button>
+          </div>
           <ShoppingCartPopup
             isOpen={isCartOpen}
             onClose={() => setIsCartOpen(false)}
