@@ -50,7 +50,9 @@ export default async function DetailProductByIdPage({
 
   return (
     <div className={styles.container}>
-      <GoBack />
+      <div className={styles.goBack}>
+        <GoBack />
+      </div>
       <ProductDetail product={product} />
     </div>
   );

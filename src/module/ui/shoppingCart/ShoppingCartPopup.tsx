@@ -8,6 +8,7 @@ import styles from "./ShoppingCartPopup.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 interface ShoppingCartPopupProps {
   isOpen: boolean;
@@ -117,7 +118,12 @@ export default function ShoppingCartPopup({
                 </button>
               </div>
             ))}
-            <div className={styles.total}>Total: ${getTotal().toFixed(2)}</div>
+            <div className={styles.total}>
+              <Link href={"/payment"} className={styles.linkButton}>
+                Ir al carrito
+              </Link>
+              <p>Total: ${getTotal().toFixed(2)}</p>
+            </div>
           </div>
         )}
       </div>
