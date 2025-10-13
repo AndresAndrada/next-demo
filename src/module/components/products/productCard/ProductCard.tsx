@@ -23,8 +23,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Link href={`/products/${product.id}`}>
-      <div className={styles.card}>
+    <div className={styles.card}>
+      <Link href={`/products/${product.id}`}>
         <div className={styles.imagePlaceholder}>
           {product?.imagen ? (
             <Image
@@ -48,20 +48,20 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className={styles.category}>{product.categoria}</p>
         <p className={styles.description}>{product.descripcion}</p>
         <p className={styles.price}>${product.precio}</p>
-        <button
-          className={styles.favoriteButton}
-          onClick={handleFavorite}
-          aria-label={
-            product.fav ? "Quitar de favoritos" : "Marcar como favorito"
-          }
-        >
-          {isFavorite(product.id) ? (
-            <FaHeart className={styles.favoriteIcon} />
-          ) : (
-            <FaRegHeart className={styles.favoriteIcon} />
-          )}{" "}
-        </button>
-      </div>
-    </Link>
+      </Link>
+      <button
+        className={styles.favoriteButton}
+        onClick={handleFavorite}
+        aria-label={
+          product.fav ? "Quitar de favoritos" : "Marcar como favorito"
+        }
+      >
+        {isFavorite(product.id) ? (
+          <FaHeart className={styles.favoriteIcon} />
+        ) : (
+          <FaRegHeart className={styles.favoriteIcon} />
+        )}{" "}
+      </button>
+    </div>
   );
 }
