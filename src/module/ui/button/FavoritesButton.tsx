@@ -20,7 +20,7 @@ export default function FavoritesButton({
       className={styles.favoriteButton}
       aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
     >
-      {isFavorite ? "★" : "☆"} {productRating}
+      {"★"} {productRating}
     </div>
   );
 }

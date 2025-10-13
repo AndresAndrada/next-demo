@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCartStore, useUiStore } from "@/store";
 import ShoppingCartPopup from "../shoppingCart/ShoppingCartPopup";
 import { MdDarkMode } from "react-icons/md";
@@ -12,7 +12,12 @@ import { FaSun } from "react-icons/fa";
 export default function NavBar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const distinctCartItems = useCartStore((state) => state.getDistinctCount());
+  const [isMounted, setIsMounted] = useState(false);
   const { theme, toggleTheme } = useUiStore();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -40,10 +45,14 @@ export default function NavBar() {
           <div
             className={styles.cartIcon}
             onClick={() => setIsCartOpen(true)}
-            // aria-label={`Abrir carrito con ${distinctCartItems} productos distintos`}
+            aria-label={
+              isMounted
+                ? `Abrir carrito con ${distinctCartItems} productos distintos`
+                : `Abrir carrito`
+            }
           >
             <FaShoppingCart size={"22px"} />
-            {distinctCartItems > 0 && (
+            {isMounted && distinctCartItems > 0 && (
               <span className={styles.cartCount}>{distinctCartItems}</span>
             )}
           </div>
