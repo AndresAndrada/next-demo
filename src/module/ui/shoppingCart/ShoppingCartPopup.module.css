@@ -216,29 +216,29 @@
 }
 
  .removeButton {
-  background: rgba(100, 90, 90, 0.1);
+  /* background: rgba(145, 139, 139, 0.1); */
   border: none;
   cursor: pointer;
   font-size: 1rem;
   border-radius: 8px;
   padding: 6px 18px;
   transition: .5s;
+  /* color: #333; */
 }
 
 .removeButton:hover {
   background: rgba(49, 47, 47, .3);
-  color: rgb(221, 0, 0);
+  box-shadow: #827e7e 0px 0px 4px;
+  color: rgb(231, 7, 7);
 }
 
 
 [data-theme="light"] .removeButton {
-  background: #b4b0b0;
-   color: #333;
+  background: #d2d1d1;
 }
 
 [data-theme="dark"] .removeButton {
-  background: #757373;
-   color: #333;
+  background: #9d9a9a;
 
 }
 
@@ -250,15 +250,18 @@
   border-radius: 8px;
   padding: 6px 18px;
   transition: .5s;
+  color: #fff;
 }
 
 .linkButton:hover {
   background: rgba(49, 47, 47, .3);
+  box-shadow: #827e7e 0px 0px 4px;
   color: rgb(221, 125, 0);
 }
 
 [data-theme="light"] .linkButton {
-  background: #b4b0b0;
+    background: #d2d1d1;
+
 }
 
 [data-theme="dark"] .linkButton {
@@ -272,17 +275,16 @@
   font-weight: 700;
   text-align: right;
   margin-top: 16px;
-  color: #fff;
   /* color: #333; */
 }
 
-[data-theme="light"] .total {
+/* [data-theme="light"] .total {
   color: #333;
 }
 
 [data-theme="dark"] .total {
   color: #fff;
-} 
+}  */
 
 /* Media queries para responsividad */
 @media (max-width: 600px) {
